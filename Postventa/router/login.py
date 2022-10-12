@@ -1,4 +1,4 @@
-from flask import Blueprint,request,session,flash,render_template
+from flask import Blueprint,request,session,flash,render_template,redirect,url_for
 
 from ..controller import UserController
 from ..models.entidades.User import User
@@ -22,7 +22,8 @@ def login():
                 session['Esta_logeado'] = True
                 session['id_persona'] = logger_user.id_persona
                 session['id_rol'] = logger_user.id_rol
-
+                #return ('<h1>Entro el login</h1>')
+                return redirect(url_for('login.admin'))
             else:
                 flash("Usuario o contraseña invalida")
                 return render_template('auth/login.html')
@@ -31,3 +32,49 @@ def login():
             return render_template('auth/login.html')
     else:
         return render_template('auth/login.html')
+
+
+
+#----------------------ADMIN------------------------------
+@tipo_login.route('/admin',methods=['GET'])
+def admin():
+    if 'Esta_logeado' in session:
+                # Aqui ponemos Titulo y descripcion 
+        parametros = { "title": "Restaurant virtual",
+                        "description": "Bienvenido(a) ",
+                        "Nombre":'admin',
+                        "tipo": "Administrador"
+        }
+        
+        return render_template("usuario/admin/dashboard_admin.html",**parametros)
+    return redirect(url_for('login'))
+
+
+#----------------------ROLES------------------------------
+@tipo_login.route('/roles',methods=['GET'])
+def roles():
+    if 'Esta_logeado' in session:
+                # Aqui ponemos Titulo y descripcion 
+        parametros = { "title": "Biomec virtual",
+                        "description": "Bienvenido(a) ",
+                        "Nombre":'',
+                        "tipo": "Administrador",
+                        "titulo": "Visualizar Usuarios",
+                        "titulo_usuario":"Listados de los Usuarios que interactuan con el Sistema"
+                }
+        return render_template("usuario/tipo.html", **parametros)
+    return redirect(url_for('login'))
+
+
+
+
+
+#----------------------Salida -----------------
+@tipo_login.route('/')
+def logout():
+    if 'Esta_logeado' in session:  
+        session.pop('Esta_logeado',None)
+        session.pop('username',None)
+        print(session)
+        return render_template('login/')
+    return render_template('login/')
