@@ -26,7 +26,7 @@ def login(usuario: User)->User:
     row = _fetch_one(sql,None)
     if row !=None:
         usuario = User(row[0],row[1], (User.check_password(row[2],(usuario.password))), row[3],row[4])
-        print(usuario)
+        print(usuario.username)
         return usuario  # El usuario se encuentra en la BD_Lab
     else:
         return None # no hay usuario

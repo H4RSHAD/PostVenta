@@ -11,3 +11,5 @@ class Config:
 
     TEMPLATE_FOLDER = "views/templates"      # defino las rutas para los archivos de vista 
     STATIC_FOLDER ="views/static"    
+
+    SECRET_KEY = "SISTEMAINFORMACION2"
