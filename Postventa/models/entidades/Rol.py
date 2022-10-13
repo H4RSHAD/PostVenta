@@ -1,6 +1,6 @@
 from flask_login import UserMixin
 
 class Rol(UserMixin):
-    def __init__(self, ID, Descripcion):
+    def __init__(self, ID, Nombre):
         self.id = ID
-        self.descricion = Descripcion
+        self.nombre = Nombre
