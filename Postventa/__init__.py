@@ -3,7 +3,7 @@ from config import Config
 from flask_wtf.csrf import CSRFProtect
 
 #Rutas
-from .router import tipo_login
+from .router import tipo_login, cliente_scope
 
 
 csrf = CSRFProtect() # instancia de proteccion
@@ -16,3 +16,4 @@ csrf.init_app(Postventa)
 
 #llamadas a las rutas
 Postventa.register_blueprint(tipo_login, url_prefix = "/")
+Postventa.register_blueprint(cliente_scope, url_prefix = "/cliente")

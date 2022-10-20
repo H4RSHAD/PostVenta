@@ -23,7 +23,8 @@ def login():
                 session['estado'] = logger_user.estado
                 session['id_rol'] = logger_user.id_rol
                 #return ('<h1>Entro el login</h1>')
-                return redirect(url_for('login.admin'))
+                #return redirect(url_for('login.admin'))
+                return redirect(url_for('cliente.get_list'))
             else:
                 flash("Usuario o contraseña invalida")
                 return render_template('auth/login.html')

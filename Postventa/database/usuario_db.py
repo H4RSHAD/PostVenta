@@ -16,8 +16,35 @@ def update(usuario: User)->User:
 def delete(usuario: User)->User: 
     pass
 
-def list_all(usuario: User)->User: 
-    pass
+def list_all(): 
+    sql = "SELECT * FROM Usuario"
+    print(sql) 
+    usuario_lista_sql = _fetch_all(sql,None)
+
+    usuarios_lista = list(usuario_lista_sql)
+    usuario_lista = [] #Tupla que devolvera todos los datos de la tabla Usuario
+    #id_roles =['','Admin','Cajero','Mesero'] #lista de roles, el primero es vacio porque es 0
+    for x in range(len(usuarios_lista)):
+        id_user = usuarios_lista[x][0]
+        nombre = usuarios_lista[x][1]
+        contraseña = str(usuarios_lista[x][2])
+        id_rol = usuarios_lista[x][3]
+        id_estado = usuarios_lista[x][4]
+        #Este es un ciclo para poder mostrar en string su tipo de rol y no mostrar numero
+        '''
+        for i in range(len(id_roles)):
+            if i == id_rol:
+                id_rol = id_roles[i]
+        id_persona= usuarios_lista[x][4]
+        '''
+        # Creo un diccionario con su respectivo encabezado y asigno el atributo correspondiente
+        print(contraseña)
+        usuario_datos = { 'id':id_user, 'nombre':nombre,'contraseña':contraseña,'id_rol':id_rol,'estado':id_estado}
+        # por cada interaccion lo guardo el diccionario de los datos de cada persona en la lista
+        usuario_lista.append(usuario_datos)
+
+    return usuario_lista
+
 
 def login(usuario: User)->User: 
     sql = """ SELECT ID, Nombre, Contraseña, ID_Rol, Estado FROM Usuario WHERE
