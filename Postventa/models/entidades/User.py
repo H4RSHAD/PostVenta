@@ -5,7 +5,8 @@ class User(UserMixin):
     def __init__(self, ID, Nombre, Contraseña, ID_Rol, Estado ) -> None:
         self.id = ID
         self.username = Nombre
-        self.password = generate_password_hash(str(Contraseña))
+        #self.password = generate_password_hash(str(Contraseña))  #Esto permitia que ingrese con cualquier contraseña, hasheaba y lo comparaba con sigo misma
+        self.password = Contraseña
         self.id_rol = ID_Rol
         self.estado = Estado
 

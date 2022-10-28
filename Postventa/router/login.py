@@ -10,14 +10,14 @@ def login():
 
     if request.method == 'POST':
         data = request.form
-
+        print(data['password'])
         usuario = User(0,data['username'],data['password'],0,0)
-
         logger_user = UserController.login(usuario)
 
         if logger_user != None:
 
             if logger_user.password:
+                print(logger_user.password)
 
                 session['Esta_logeado'] = True
                 session['estado'] = logger_user.estado
