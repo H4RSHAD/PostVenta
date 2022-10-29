@@ -13,6 +13,7 @@ Ingresa a la ruta del proyecto desde el cmd, (esto solo se realiza la primera ve
 ### `pip install -r requirements.txt`
 
 <hr/>
+
 ![](./preview1.png)
 <br/><br/>
 
