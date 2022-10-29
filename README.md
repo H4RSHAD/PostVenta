@@ -12,6 +12,9 @@ Ingresa a la ruta del proyecto desde el cmd, (esto solo se realiza la primera ve
 3.- Para instalar los paquetes necesarios, esto solo se realiza la primera vez que abres el proyecto desde otro equipo:
 ### `pip install -r requirements.txt`
 
+<hr/>
+![](./static/img/logo.png)
+<br/><br/>
 
 ## <a name='reference'>Referencias</a>
 
